@@ -1,8 +1,8 @@
 /* ***************************************************************
 Autor: Aleksander Santos Sousa*
 Matricula: 201810825*
-Inicio: 02/11/2020*
-Ultima alteracao: 07/11/2020*
+Inicio: 09/11/2020*
+Ultima alteracao: 13/11/2020*
 Nome: Simulador de Redes*
 Funcao: Simular o envio de uma mensagem de texto.
 *************************************************************** */
@@ -38,11 +38,10 @@ public class MeioDeComunicacao {
           int numero = fluxoBrutoDeBitsPontoA[i];
 
           for(int j=1; j<=32; j++){
-            double erro = Math.random();
+            int erro = (int) Math.random() * 100;
 
             valor <<= 1;
-            System.out.println(erro);
-            if(erro < porcentagemDeErro/100) { //deu erro
+            if(erro < porcentagemDeErro) { //deu erro
               valor |= (numero & displayMask) == 0 ? 1 : 0;
             } else {
               valor |= (numero & displayMask) == 0 ? 0 : 1;

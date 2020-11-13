@@ -2,17 +2,16 @@
 Autor: Aleksander Santos Sousa*
 Matricula: 201810825*
 Inicio: 09/11/2020*
-Ultima alteracao: 10/11/2020*
+Ultima alteracao: 13/11/2020*
 Nome: Simulador de Redes*
 Funcao: Simular o envio de uma mensagem de texto.
 *************************************************************** */
 package camadas.camada_enlace.controle_de_erro;
 
-import javax.swing.JOptionPane;
-
 import util.Constantes;
 import util.Conversao;
 import util.Util;
+import view.Erro;
 
 public class CamadaEnlaceDadosReceptoraControleDeErro {
   public static int[] camadaEnlaceDadosReceptoraControleDeErro(int[] quadro) {
@@ -52,7 +51,7 @@ public class CamadaEnlaceDadosReceptoraControleDeErro {
 
     for (int i=0; i<resto.length; i++) {
       if (resto[i] != 0) {
-        JOptionPane.showMessageDialog(null, "Mensagem com erro! Reenvie a mensagem.", "Alerta!", JOptionPane.ERROR_MESSAGE);
+        Erro.tratarErroCRC();
         break;
       }
     }

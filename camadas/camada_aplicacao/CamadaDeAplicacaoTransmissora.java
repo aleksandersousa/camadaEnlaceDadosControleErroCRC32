@@ -1,15 +1,16 @@
 /* ***************************************************************
 Autor: Aleksander Santos Sousa*
 Matricula: 201810825*
-Inicio: 02/11/2020*
-Ultima alteracao: 07/11/2020*
+Inicio: 09/11/2020*
+Ultima alteracao: 13/11/2020*
 Nome: Simulador de Redes*
 Funcao: Simular o envio de uma mensagem de texto.
 *************************************************************** */
 package camadas.camada_aplicacao;
 
-import util.Conversao;
 import camadas.camada_enlace.CamadaEnlaceDadosTransmissora;
+
+import util.Conversao;
 import util.Constantes;
 import util.Util;
 

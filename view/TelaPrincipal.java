@@ -1,8 +1,8 @@
 /* ***************************************************************
 Autor: Aleksander Santos Sousa*
 Matricula: 201810825*
-Inicio: 02/11/2020*
-Ultima alteracao: 07/11/2020*
+Inicio: 09/11/2020*
+Ultima alteracao: 13/11/2020*
 Nome: Simulador de Redes*
 Funcao: Simular o envio de uma mensagem de texto.
 *************************************************************** */
@@ -98,6 +98,9 @@ public class TelaPrincipal extends JFrame {
           this.setMinimum(1);
           this.setValue(5);
           this.setMaximum(10);
+          this.setMajorTickSpacing(1);
+          this.setPaintTicks(true);
+          this.setPaintLabels(true);
           this.addChangeListener( e -> Canvas.velocidade = this.getValue());
         }
       };
@@ -110,12 +113,6 @@ public class TelaPrincipal extends JFrame {
         painel1.add(labelBarraDeVelocidade);
         painel1.add(barraDeVelocidade);
       }
-
-      // @Override
-      // public Dimension getPreferredSize() {
-      //   return new Dimension(0, 0);
-      // }
-
       {
         this.iniciarPainel1();
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));

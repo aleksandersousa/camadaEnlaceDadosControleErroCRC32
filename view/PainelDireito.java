@@ -1,8 +1,8 @@
 /* ***************************************************************
 Autor: Aleksander Santos Sousa*
 Matricula: 201810825*
-Inicio: 02/11/2020*
-Ultima alteracao: 07/11/2020*
+Inicio: 09/11/2020*
+Ultima alteracao: 13/11/2020*
 Nome: Simulador de Redes*
 Funcao: Simular o envio de uma mensagem de texto.
 *************************************************************** */
@@ -26,13 +26,15 @@ public class PainelDireito extends JPanel {
   public static ArrayList<JTextArea> arrayCaixasDeTexto;
   private ArrayList<JPanel> arrayPaineis;
   private JTextArea txtLabelNumerosAciiDecodificados;
-  private JTextArea txtLabelQuadrosDecodificados;
+  private JTextArea txtLabelBitsRecebidos;
   private JTextArea txtLabelInstrucoes;
-  private JTextArea txtLabelCRCDecodificado;
+  private JTextArea txtLabelCRCRecebido;
 
   /*
    * ************************************************************** Metodo:
-   * PainelDireito* Funcao: Construtor da classe PainelDireito.* Parametros: nulo*
+   * PainelDireito
+   * Funcao: Construtor da classe PainelDireito.
+   * Parametros: nulo*
    * Retorno: void*
    */
   public PainelDireito() {
@@ -40,9 +42,9 @@ public class PainelDireito extends JPanel {
     this.arrayPaineis = new ArrayList<>();
 
     this.txtLabelNumerosAciiDecodificados = new JTextArea("Numero Ascii: ");
-    this.txtLabelQuadrosDecodificados = new JTextArea("Quadros Decodificados: ");
+    this.txtLabelBitsRecebidos = new JTextArea("Bits recebidos: ");
     this.txtLabelInstrucoes = new JTextArea("Clique no botão ou aperte enter para enviar.");
-    this.txtLabelCRCDecodificado = new JTextArea("CRC decodificado: ");
+    this.txtLabelCRCRecebido = new JTextArea("CRC recebido: ");
 
 
     for (int i = 0; i < Constantes.TAMANHO_ARRAY_PAINEIS; i++) {
@@ -71,15 +73,15 @@ public class PainelDireito extends JPanel {
    */
   private void formatarLabels() {
     this.txtLabelNumerosAciiDecodificados.setBackground(this.getBackground());
-    this.txtLabelQuadrosDecodificados.setBackground(this.getBackground());
-    this.txtLabelCRCDecodificado.setBackground(this.getBackground());
+    this.txtLabelBitsRecebidos.setBackground(this.getBackground());
+    this.txtLabelCRCRecebido.setBackground(this.getBackground());
     this.txtLabelInstrucoes.setBackground(this.getBackground());
 
     Formatacao.inicializarLabels(txtLabelNumerosAciiDecodificados, Constantes.LARGURA_LABELS_DIREITO,
         Constantes.ALTURA_LABELS);
-    Formatacao.inicializarLabels(txtLabelQuadrosDecodificados, Constantes.LARGURA_LABELS_DIREITO,
+    Formatacao.inicializarLabels(txtLabelBitsRecebidos, Constantes.LARGURA_LABELS_DIREITO,
         Constantes.ALTURA_LABELS);
-    Formatacao.inicializarLabels(txtLabelCRCDecodificado, Constantes.LARGURA_LABELS_DIREITO,
+    Formatacao.inicializarLabels(txtLabelCRCRecebido, Constantes.LARGURA_LABELS_DIREITO,
         Constantes.ALTURA_LABELS);
     Formatacao.inicializarLabels(txtLabelInstrucoes, 320, 20);
     txtLabelInstrucoes.setForeground(Color.RED);
@@ -99,11 +101,11 @@ public class PainelDireito extends JPanel {
     arrayPaineis.get(1).add(Formatacao.inicializarBarraDeRolagem(PainelDireito.arrayCaixasDeTexto.get(1),
         Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
 
-    arrayPaineis.get(2).add(txtLabelQuadrosDecodificados);
+    arrayPaineis.get(2).add(txtLabelBitsRecebidos);
     arrayPaineis.get(2).add(Formatacao.inicializarBarraDeRolagem(Formatacao.arrayCaixasDeTexto.get(5),
         Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
     
-    arrayPaineis.get(3).add(txtLabelCRCDecodificado);
+    arrayPaineis.get(3).add(txtLabelCRCRecebido);
     arrayPaineis.get(3).add(Formatacao.inicializarBarraDeRolagem(Formatacao.arrayCaixasDeTexto.get(6),
         Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
     

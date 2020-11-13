@@ -1,8 +1,8 @@
 /* ***************************************************************
 Autor: Aleksander Santos Sousa*
 Matricula: 201810825*
-Inicio: 02/11/2020*
-Ultima alteracao: 07/11/2020*
+Inicio: 09/11/2020*
+Ultima alteracao: 13/11/2020*
 Nome: Simulador de Redes*
 Funcao: Simular o envio de uma mensagem de texto.
 *************************************************************** */
@@ -14,13 +14,8 @@ public class Constantes {
   public static final int ALTURA_LABELS = 18;
   public static final int ASCII = 0;
   public static final int ASCII_DECODIFICADO = 2;
-  // public static final int BIT_BRUTO = 5;
-  // public static final int BIT_CODIFICADO = 1;
-  // public static final int BIT_DECODIFICADO = 4;
-  // public static final int BIT_RECEBIDO = 6;
-  // public static final int CODIFICACAO_BINARIA = 0;
-  // public static final int CODIFICACAO_MANCHESTER = 1;
-  // public static final int CODIFICACAO_MANCHESTER_DIFERENCIAL = 2;
+  public static final int BIT_BRUTO = 5;
+  public static final int BIT_RECEBIDO = 6;
   public static final int CRC_CODIFICADO = 9;
   public static final int CRC_DECODIFICADO = 10;
   public static final int ESPACO = 32;
@@ -30,7 +25,5 @@ public class Constantes {
   public static final int MENSAGEM_DECODIFICADA = 3;
   public static final int CAIXA_DE_TEXTO_ASCII_0 = 0;
   public static final int CAIXA_DE_TEXTO_ASCII_1 = 1;
-  public static final int QUADRO_CODIFICADO = 7;
-  public static final int QUADRO_DECODIFICADO = 8;
   public static final int TAMANHO_ARRAY_PAINEIS = 5;
 }

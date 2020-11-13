@@ -1,8 +1,8 @@
 /* ***************************************************************
 Autor: Aleksander Santos Sousa*
 Matricula: 201810825*
-Inicio: 02/11/2020*
-Ultima alteracao: 07/11/2020*
+Inicio: 09/11/2020*
+Ultima alteracao: 13/11/2020*
 Nome: Simulador de Redes*
 Funcao: Simular o envio de uma mensagem de texto.
 *************************************************************** */
@@ -260,7 +260,7 @@ public class Conversao {
         valor = 0;
       }
     }
-
+    
     return bitsComprimidos;
   }
 }

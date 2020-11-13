@@ -1,8 +1,8 @@
 /* ***************************************************************
 Autor: Aleksander Santos Sousa*
 Matricula: 201810825*
-Inicio: 02/11/2020*
-Ultima alteracao: 07/11/2020*
+Inicio: 09/11/2020*
+Ultima alteracao: 13/11/2020*
 Nome: Simulador de Redes*
 Funcao: Simular o envio de uma mensagem de texto.
 *************************************************************** */
@@ -33,10 +33,10 @@ public class CamadaDeAplicacaoReceptora {
 
       String mensagem = Conversao.asciiParaMensagem(asciiArray);
       AplicacaoReceptora.aplicacaoReceptora(mensagem);
+
     } catch (Exception e) { //reinicia o programa em caso de erro
       PainelEsquerdo.sliderErro.setEnabled(true);
-      PainelEsquerdo.mutexCodificacao.release();
-      PainelEsquerdo.mutexSliderErro.release();
+      PainelEsquerdo.mutexEnvio.release();
     }
   }
 }

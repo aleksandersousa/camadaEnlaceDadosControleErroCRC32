@@ -1,8 +1,8 @@
 /* ***************************************************************
 Autor: Aleksander Santos Sousa*
 Matricula: 201810825*
-Inicio: 02/11/2020*
-Ultima alteracao: 07/11/2020*
+Inicio: 09/11/2020*
+Ultima alteracao: 13/11/2020*
 Nome: Simulador de Redes*
 Funcao: Simular o envio de uma mensagem de texto.
 *************************************************************** */
@@ -31,7 +31,6 @@ import java.util.concurrent.Semaphore;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
@@ -41,31 +40,32 @@ import javax.swing.JTextField;
 public class PainelEsquerdo extends JPanel {
   public static ArrayList<JTextArea> arrayCaixasDeTexto;
 
+  public static JButton btnEnviar;
+  public static ReduzirPermissoes mutexEnvio;
+  public static JSlider sliderErro;
+
   private ArrayList<JPanel> arrayPaineis;
   private JTextArea txtLabelNumerosAscii;
   private JTextArea txtLabelQuadrosCodificados;
   private JTextArea txtLabelSliderErro;
   private JTextArea txtLabelCRCCodificado;
   private JTextField txtMensagem;
-  public static JButton btnEnviar;
-  public static ReduzirPermissoes mutexCodificacao;
-  public static ReduzirPermissoes mutexSliderErro;
-  public static JSlider sliderErro;
 
   /*
-   * ************************************************************** Metodo:
-   * PainelEsquerdo* Funcao: Construtor da classe PainelEsquerdo.* Parametros:
-   * nulo* Retorno: void*
+   * ************************************************************** 
+   * Metodo: PainelEsquerdo 
+   * Funcao: Construtor da classe PainelEsquerdo
+   * Parametros: nulo
+   * Retorno: void
    */
   public PainelEsquerdo() {
     this.arrayPaineis = new ArrayList<>();
     this.txtLabelNumerosAscii = new JTextArea("Numeros Ascii: ");
-    this.txtLabelQuadrosCodificados = new JTextArea("Quadros Codificados: ");
+    this.txtLabelQuadrosCodificados = new JTextArea("Bits: ");
     this.txtLabelSliderErro = new JTextArea("Porcentagem de erros: ");
     this.txtLabelCRCCodificado = new JTextArea("CRC codificado: ");
 
-    PainelEsquerdo.mutexCodificacao = new ReduzirPermissoes(1);
-    PainelEsquerdo.mutexSliderErro = new ReduzirPermissoes(1);
+    PainelEsquerdo.mutexEnvio = new ReduzirPermissoes(1);
 
     PainelEsquerdo.arrayCaixasDeTexto = Formatacao.inicializarCaixasDeTexto();
 
@@ -134,28 +134,7 @@ public class PainelEsquerdo extends JPanel {
         this.addActionListener(new ActionListener() {
           @Override
           public void actionPerformed(ActionEvent e) {
-            new Thread(new Runnable() {
-              @Override
-              public void run() {
-                if (mutexCodificacao.tryAcquire() && mutexSliderErro.tryAcquire()){
-                  sliderErro.setEnabled(false);
-                  sliderErro.update(sliderErro.getGraphics());
-
-                  if (txtMensagem.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Caixa de texto vazia!", "Alerta!", JOptionPane.ERROR_MESSAGE);
-                    mutexCodificacao.release();
-                    mutexSliderErro.release();
-                  } else {
-                    AplicacaoTransmissora.aplicacaoTransmissora(txtMensagem.getText());
-                    repaint();
-                  }
-                } else {
-                  JOptionPane.showMessageDialog(null, "Mensagem em andamento!", "Alerta!", JOptionPane.ERROR_MESSAGE);
-                  mutexCodificacao.callReducePermits(mutexCodificacao.getQueueLength());
-                  mutexSliderErro.callReducePermits(mutexSliderErro.getQueueLength());
-                }
-              }
-            }).start();
+            AplicacaoTransmissora.aplicacaoTransmissora(txtMensagem.getText());
           }
         });
 
@@ -219,7 +198,6 @@ public class PainelEsquerdo extends JPanel {
         this.setMajorTickSpacing(20);
         this.setPaintTicks(true);
         this.setPaintLabels(true);
-        this.setSnapToTicks(true);
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.addChangeListener(e -> MeioDeComunicacao.porcentagemDeErro = this.getValue());
       }
