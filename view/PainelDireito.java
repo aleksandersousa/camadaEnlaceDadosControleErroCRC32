@@ -13,6 +13,7 @@ import util.Formatacao;
 
 import java.awt.Dimension;
 import java.awt.Color;
+import java.awt.Font;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ public class PainelDireito extends JPanel {
   private JTextArea txtLabelInstrucoes;
   private JTextArea txtLabelCRCRecebido;
 
+  private String emoji = "\uD83D\uDE01";
+
   /*
    * ************************************************************** Metodo:
    * PainelDireito
@@ -43,7 +46,8 @@ public class PainelDireito extends JPanel {
 
     this.txtLabelNumerosAciiDecodificados = new JTextArea("Numero Ascii: ");
     this.txtLabelBitsRecebidos = new JTextArea("Bits recebidos: ");
-    this.txtLabelInstrucoes = new JTextArea("Clique no botão ou aperte enter para enviar.");
+    this.txtLabelInstrucoes = new JTextArea("Clique no botão ou aperte enter\n" + 
+                                            "                para enviar " + emoji);
     this.txtLabelCRCRecebido = new JTextArea("CRC recebido: ");
 
 
@@ -77,15 +81,15 @@ public class PainelDireito extends JPanel {
     this.txtLabelCRCRecebido.setBackground(this.getBackground());
     this.txtLabelInstrucoes.setBackground(this.getBackground());
 
-    Formatacao.inicializarLabels(txtLabelNumerosAciiDecodificados, Constantes.LARGURA_LABELS_DIREITO,
-        Constantes.ALTURA_LABELS);
-    Formatacao.inicializarLabels(txtLabelBitsRecebidos, Constantes.LARGURA_LABELS_DIREITO,
-        Constantes.ALTURA_LABELS);
-    Formatacao.inicializarLabels(txtLabelCRCRecebido, Constantes.LARGURA_LABELS_DIREITO,
-        Constantes.ALTURA_LABELS);
-    Formatacao.inicializarLabels(txtLabelInstrucoes, 320, 20);
+    Formatacao.inicializarLabels(txtLabelNumerosAciiDecodificados, Constantes.LARGURA_LABELS_DIREITO * 0.56, Constantes.ALTURA_LABELS);
+    Formatacao.inicializarLabels(txtLabelBitsRecebidos, Constantes.LARGURA_LABELS_DIREITO * 0.62, Constantes.ALTURA_LABELS);
+    Formatacao.inicializarLabels(txtLabelCRCRecebido, Constantes.LARGURA_LABELS_DIREITO * 0.57, Constantes.ALTURA_LABELS);
+    Formatacao.inicializarLabels(txtLabelInstrucoes, 450, 100);
     txtLabelInstrucoes.setForeground(Color.RED);
-    txtLabelInstrucoes.setBounds(50, 32, 320, 20);
+    txtLabelInstrucoes.setBounds(90, 27, 320, 50);
+    txtLabelInstrucoes.setFont(new Font("txt", Font.BOLD, 15));
+    txtLabelInstrucoes.setLineWrap(true);
+    txtLabelInstrucoes.setWrapStyleWord(true);
   }
 
   /*
@@ -94,20 +98,16 @@ public class PainelDireito extends JPanel {
    * painel.* Parametros: nulo* Retorno: void*
    */
   private void adicionarComponentes() {
-    arrayPaineis.get(0).add(Formatacao.inicializarBarraDeRolagem(PainelDireito.arrayCaixasDeTexto.get(4),
-        Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES));
+    arrayPaineis.get(0).add(Formatacao.inicializarBarraDeRolagem(PainelDireito.arrayCaixasDeTexto.get(4), Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
 
     arrayPaineis.get(1).add(txtLabelNumerosAciiDecodificados);
-    arrayPaineis.get(1).add(Formatacao.inicializarBarraDeRolagem(PainelDireito.arrayCaixasDeTexto.get(1),
-        Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
+    arrayPaineis.get(1).add(Formatacao.inicializarBarraDeRolagem(PainelDireito.arrayCaixasDeTexto.get(1), Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
 
     arrayPaineis.get(2).add(txtLabelBitsRecebidos);
-    arrayPaineis.get(2).add(Formatacao.inicializarBarraDeRolagem(Formatacao.arrayCaixasDeTexto.get(5),
-        Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
+    arrayPaineis.get(2).add(Formatacao.inicializarBarraDeRolagem(Formatacao.arrayCaixasDeTexto.get(5), Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
     
     arrayPaineis.get(3).add(txtLabelCRCRecebido);
-    arrayPaineis.get(3).add(Formatacao.inicializarBarraDeRolagem(Formatacao.arrayCaixasDeTexto.get(6),
-        Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
+    arrayPaineis.get(3).add(Formatacao.inicializarBarraDeRolagem(Formatacao.arrayCaixasDeTexto.get(6), Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2));
     
     arrayPaineis.get(4).setPreferredSize(new Dimension(320, 60));
     arrayPaineis.get(4).setLayout(null);

@@ -20,7 +20,7 @@ public class Constantes {
   public static final int CRC_DECODIFICADO = 10;
   public static final int ESPACO = 32;
   public static final int LARGURA_LABELS_DIREITO = 170;
-  public static final int LARGURA_LABELS_ESQUERDO = 160;
+  public static final int LARGURA_LABELS_ESQUERDO = 250;
   public static final int LIMITE_DE_BYTES_INTEIRO = 4;
   public static final int MENSAGEM_DECODIFICADA = 3;
   public static final int CAIXA_DE_TEXTO_ASCII_0 = 0;

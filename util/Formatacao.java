@@ -30,8 +30,8 @@ public class Formatacao {
    * txt: label a ser formatado int largura: largura int altura: altura* Retorno:
    * void*
    */
-  public static void inicializarLabels(JTextArea txt, int largura, int altura) {
-    txt.setPreferredSize(new Dimension(largura, altura));
+  public static void inicializarLabels(JTextArea txt, double largura, int altura) {
+    txt.setPreferredSize(new Dimension((int) largura, altura));
     txt.setFont(fonte);
     txt.setEditable(false);
     txt.setAlignmentX(Component.CENTER_ALIGNMENT);

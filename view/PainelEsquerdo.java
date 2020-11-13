@@ -62,7 +62,7 @@ public class PainelEsquerdo extends JPanel {
     this.arrayPaineis = new ArrayList<>();
     this.txtLabelNumerosAscii = new JTextArea("Numeros Ascii: ");
     this.txtLabelQuadrosCodificados = new JTextArea("Bits: ");
-    this.txtLabelSliderErro = new JTextArea("Porcentagem de erros: ");
+    this.txtLabelSliderErro = new JTextArea("Porcentagem de erros (bit a bit): ");
     this.txtLabelCRCCodificado = new JTextArea("CRC codificado: ");
 
     PainelEsquerdo.mutexEnvio = new ReduzirPermissoes(1);
@@ -100,7 +100,7 @@ public class PainelEsquerdo extends JPanel {
     txtMensagem = new JTextField("Digite sua mensagem") {
       @Override
       public Dimension getPreferredSize() {
-        return new Dimension(Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES);
+        return new Dimension(Constantes.LARGURA_COMPONENTES, Constantes.ALTURA_COMPONENTES * 2);
       }
 
       {
@@ -173,9 +173,9 @@ public class PainelEsquerdo extends JPanel {
     this.txtLabelCRCCodificado.setBackground(this.getBackground());
     this.txtLabelSliderErro.setBackground(this.getBackground());
 
-    Formatacao.inicializarLabels(txtLabelNumerosAscii, Constantes.LARGURA_LABELS_ESQUERDO, Constantes.ALTURA_LABELS);
-    Formatacao.inicializarLabels(txtLabelQuadrosCodificados, Constantes.LARGURA_LABELS_ESQUERDO, Constantes.ALTURA_LABELS);
-    Formatacao.inicializarLabels(txtLabelCRCCodificado, Constantes.LARGURA_LABELS_ESQUERDO, Constantes.ALTURA_LABELS);
+    Formatacao.inicializarLabels(txtLabelNumerosAscii, Constantes.LARGURA_LABELS_ESQUERDO * 0.41, Constantes.ALTURA_LABELS);
+    Formatacao.inicializarLabels(txtLabelQuadrosCodificados, Constantes.LARGURA_LABELS_ESQUERDO * 0.2, Constantes.ALTURA_LABELS);
+    Formatacao.inicializarLabels(txtLabelCRCCodificado, Constantes.LARGURA_LABELS_ESQUERDO * 0.425, Constantes.ALTURA_LABELS);
     Formatacao.inicializarLabels(txtLabelSliderErro, Constantes.LARGURA_LABELS_ESQUERDO, Constantes.ALTURA_LABELS);
   }
 
