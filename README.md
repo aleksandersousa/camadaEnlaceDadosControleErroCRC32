@@ -1,4 +1,4 @@
-# Simulador_camada_fisica_redes
+# Simulador de Redes
 
 Redes de computadores 1 - Simulador de redes 
 Implementação da camada de enlace de dados - controle de erro CRC-32 
